@@ -1,0 +1,83 @@
+# Repo root: the Flutter project lives in app/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# IDE metadata
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+app/.idea/
+
+# Root build output and Flutter project caches
+build/
+coverage/
+app/.dart_tool/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/.pub/
+app/.pub-cache/
+app/build/
+app/coverage/
+
+# Generated docs and temporary output
+app/doc/api/
+app/.history/
+app/.build/
+app/.buildlog/
+app/.svn/
+app/.swiftpm/
+app/migrate_working_dir/
+
+# Android build and local configuration
+app/android/.gradle/
+app/android/.cxx/
+app/android/captures/
+app/android/app/debug/
+app/android/app/profile/
+app/android/app/release/
+app/android/local.properties
+app/android/key.properties
+app/android/*.jks
+app/android/*.keystore
+GeneratedPluginRegistrant.java
+
+# iOS build artifacts and user-specific files
+app/ios/Pods/
+app/ios/.symlinks/
+app/ios/.generated/
+app/ios/.vagrant/
+app/ios/DerivedData/
+app/ios/Flutter/.last_build_id
+app/ios/Flutter/ephemeral/
+app/ios/Flutter/App.framework
+app/ios/Flutter/Flutter.framework
+app/ios/Flutter/Flutter.podspec
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/app.flx
+app/ios/Flutter/app.zip
+app/ios/Flutter/flutter_assets/
+app/ios/Flutter/flutter_export_environment.sh
+app/ios/Runner/GeneratedPluginRegistrant.*
+app/ios/Runner.xcodeproj/project.xcworkspace/xcuserdata/
+app/ios/Runner.xcworkspace/xcuserdata/
+app/ios/ServiceDefinitions.json
+app/ios/**/xcuserdata/
+app/ios/Icon?
+app/ios/*.mode1v3
+app/ios/*.mode2v3
+app/ios/*.moved-aside
+app/ios/*.pbxuser
+app/ios/*.perspectivev3
+app/ios/**/*.tags*
+
+# Symbolication and obfuscation outputs
+app/app.*.symbols
+app/app.*.map.json
