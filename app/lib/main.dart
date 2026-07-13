@@ -1,5 +1,5 @@
-import 'package:adhd_nemesis/core/theme/app_palette.dart';
-import 'package:adhd_nemesis/core/theme/app_theme.dart';
+import 'package:adhd_nemesis/src/core/theme/app_palette.dart';
+import 'package:adhd_nemesis/src/core/theme/app_theme.dart';
 import 'package:adhd_nemesis/src/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: Home(),
+      home: const Home(),
     );
   }
 }

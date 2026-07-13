@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:adhd_nemesis/core/theme/app_palette.dart';
+import 'package:adhd_nemesis/src/core/theme/app_palette.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData.light().copyWith(
