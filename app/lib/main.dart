@@ -1,4 +1,3 @@
-import 'package:adhd_nemesis/src/core/theme/app_palette.dart';
 import 'package:adhd_nemesis/src/core/theme/app_theme.dart';
 import 'package:adhd_nemesis/src/pages/home.dart';
 import 'package:flutter/material.dart';
