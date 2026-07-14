@@ -3,6 +3,7 @@ import 'package:adhd_nemesis/src/core/theme/app_palette.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData.light().copyWith(
+    scaffoldBackgroundColor: AppPalette.lightBackground,
     colorScheme: const ColorScheme.light(
       primary: AppPalette.gold,
       secondary: AppPalette.emerald,
@@ -17,6 +18,7 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: AppPalette.darkBackground,
     colorScheme: const ColorScheme.dark(
       primary: AppPalette.gold,
       secondary: AppPalette.emerald,
