@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:adhd_nemesis/src/core/theme/app_palette.dart';
+import 'package:adhd_nemesis/src/ui/core/theme/app_palette.dart';
 
-class AppTheme {
+abstract final class AppTheme {
   static final lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: AppPalette.lightBackground,
     colorScheme: const ColorScheme.light(

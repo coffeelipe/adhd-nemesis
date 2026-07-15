@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppPalette {
+abstract final class AppPalette {
   static const Color pink = Color(0xffef476f);
   static const Color gold = Color(0xffffd166);
   static const Color emerald = Color(0xff06d6a0);

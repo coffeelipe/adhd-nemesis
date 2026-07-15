@@ -1,9 +1,9 @@
-import 'package:adhd_nemesis/src/core/extensions/context_extensions.dart';
-import 'package:adhd_nemesis/src/core/theme/app_theme.dart';
+import 'package:adhd_nemesis/src/utils/extensions/context_extensions.dart';
+import 'package:adhd_nemesis/src/ui/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class Calendar extends StatelessWidget {
-  const Calendar({super.key});
+class CalendarFrame extends StatelessWidget {
+  const CalendarFrame({super.key});
 
   @override
   Widget build(BuildContext context) {
