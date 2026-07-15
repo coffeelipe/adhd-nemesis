@@ -1,4 +1,4 @@
-import 'package:adhd_nemesis/src/ui/calendar/widgets/calendar_frame.dart';
+import 'package:adhd_nemesis/src/ui/calendar/widgets/calendar_view.dart';
 import 'package:adhd_nemesis/src/utils/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -8,10 +8,7 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: context.padding,
-        child: const _Calendar()
-      ),
+      child: Padding(padding: context.padding, child: const _Calendar()),
     );
   }
 }
@@ -26,7 +23,7 @@ class _Calendar extends StatelessWidget {
         const _MonthSelector(),
         ConstrainedBox(
           constraints: BoxConstraints(maxHeight: context.height * 0.32),
-          child: const CalendarFrame(),
+          child: const CalendarView(),
         ),
       ],
     );
