@@ -1,5 +1,7 @@
 import 'package:adhd_nemesis/src/ui/calendar/calendar_constants.dart';
 import 'package:adhd_nemesis/src/ui/calendar/view_models/calendar_viewmodel.dart';
+import 'package:adhd_nemesis/src/ui/core/dimmens/app_dimmens.dart';
+import 'package:adhd_nemesis/src/ui/core/theme/app_palette.dart';
 import 'package:adhd_nemesis/src/utils/extensions/context_extensions.dart';
 import 'package:adhd_nemesis/src/ui/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,7 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(AppDimens.medium),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 7,
@@ -42,7 +44,7 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: CalendarConstants.monthGridSize,
               itemBuilder: (context, index) =>
-                  _buildCalendarCell(index, calendarViewModel),
+                  _buildCalendarCell(context, index, calendarViewModel),
             ),
           ),
         ),
@@ -69,7 +71,11 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
   }
 }
 
-Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
+Widget _buildCalendarCell(
+  BuildContext context,
+  int index,
+  CalendarViewModel calendarViewModel,
+) {
   final calendar = calendarViewModel.calendar;
   final dateTime = calendar.selectedDate;
   final firstDayOfMonth = DateTime(dateTime.year, dateTime.month, 1);
@@ -79,7 +85,7 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
   if (index < 7) {
     return Center(
       child: Text(
-        CalendarConstants.days[index].toUpperCase().substring(0, 3),
+        CalendarConstants.days[index].toUpperCase().substring(0, 2),
         style: TextStyle(
           color: AppTheme.lightTheme.colorScheme.onSurface,
           fontWeight: FontWeight.bold,
@@ -90,6 +96,10 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
 
   final int dayIndex = index - 7;
   final int day = dayIndex - cellsToSkip + 1;
+  final isIndexToday =
+      day == calendar.currentDate.day &&
+      dateTime.month == calendar.currentDate.month &&
+      dateTime.year == calendar.currentDate.year;
 
   if (dayIndex < cellsToSkip || dayIndex >= cellsToSkip + daysInMonth) {
     return const SizedBox.shrink();
@@ -101,7 +111,7 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
     ),
     child: Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(AppDimens.small),
         border: day == calendar.selectedDate.day
             ? Border.all(color: Colors.black)
             : null,

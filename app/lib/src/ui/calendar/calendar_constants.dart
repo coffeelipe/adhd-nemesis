@@ -1,4 +1,4 @@
-abstract class CalendarConstants {
+abstract final class CalendarConstants {
   static const List<String> months = [
     'January',
     'February',
