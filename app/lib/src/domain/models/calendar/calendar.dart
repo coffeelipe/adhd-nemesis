@@ -27,13 +27,24 @@ class CalendarNotifier extends _$CalendarNotifier {
   @override
   Calendar build() => Calendar();
 
+  void selectDate(DateTime date) {
+    state = state.copyWith(selectedDate: date);
+  }
+
   void createEvent(CalendarEvent event) {
-    state.events[event.type]!.add(event);
+    state = state.copyWith(
+      events: Map.from(state.events)..[event.type]!.add(event),
+      selectedDate: state.selectedDate,
+    );
   }
 
   void deleteEvent(int id) {
-    state.events.forEach(
-      (key, value) => value.removeWhere((index) => index.id == id),
+    state = state.copyWith(
+      events: Map.from(state.events)
+        ..updateAll(
+          (key, value) => value.where((event) => event.id != id).toList(),
+        ),
+      selectedDate: state.selectedDate,
     );
   }
 }
