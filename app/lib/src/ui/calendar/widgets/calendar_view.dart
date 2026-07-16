@@ -1,4 +1,4 @@
-import 'package:adhd_nemesis/src/domain/models/calendar/calendar.dart';
+import 'package:adhd_nemesis/src/ui/calendar/calendar_constants.dart';
 import 'package:adhd_nemesis/src/ui/calendar/view_models/calendar_viewmodel.dart';
 import 'package:adhd_nemesis/src/utils/extensions/context_extensions.dart';
 import 'package:adhd_nemesis/src/ui/core/theme/app_theme.dart';
@@ -23,19 +23,6 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
-    final calendar = calendarViewModel.calendar;
-    final firstDayOfMonth = DateTime(
-      DateTime.now().year,
-      DateTime.now().month,
-      1,
-    );
-    final cellsToSkip = firstDayOfMonth.weekday % 7;
-    final daysInMonth = DateTime(
-      firstDayOfMonth.year,
-      firstDayOfMonth.month + 1,
-      0,
-    ).day;
-
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.topCenter,
@@ -53,9 +40,9 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
                 childAspectRatio: 1.4,
               ),
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: calendar.monthGridSize,
+              itemCount: CalendarConstants.monthGridSize,
               itemBuilder: (context, index) =>
-                  _buildCalendarCell(calendar, index, cellsToSkip, daysInMonth),
+                  _buildCalendarCell(index, calendarViewModel),
             ),
           ),
         ),
@@ -82,12 +69,13 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
   }
 }
 
-Widget _buildCalendarCell(
-  Calendar calendar,
-  int index,
-  int cellsToSkip,
-  int daysInMonth,
-) {
+Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
+  final calendar = calendarViewModel.calendar;
+  final dateTime = calendar.selectedDate;
+  final firstDayOfMonth = DateTime(dateTime.year, dateTime.month, 1);
+  final daysInMonth = DateTime(dateTime.year, dateTime.month + 1, 0).day;
+  final cellsToSkip = firstDayOfMonth.weekday % 7;
+
   if (index < 7) {
     return Center(
       child: Text(
