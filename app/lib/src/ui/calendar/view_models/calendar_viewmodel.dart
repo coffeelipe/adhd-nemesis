@@ -10,6 +10,11 @@ class CalendarViewModel extends ChangeNotifier {
 
   Calendar get calendar => ref.watch(calendarProvider);
 
+  void selectDate(DateTime date) {
+    ref.read(calendarProvider.notifier).selectDate(date);
+    notifyListeners();
+  }
+
   void createEvent(CalendarEvent event) {
     ref.read(calendarProvider.notifier).createEvent(event);
     notifyListeners();
