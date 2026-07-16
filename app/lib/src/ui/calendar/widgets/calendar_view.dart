@@ -79,7 +79,7 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
   if (index < 7) {
     return Center(
       child: Text(
-        calendar.timeStrings['days']![index].toUpperCase().substring(0, 3),
+        CalendarConstants.days[index].toUpperCase().substring(0, 3),
         style: TextStyle(
           color: AppTheme.lightTheme.colorScheme.onSurface,
           fontWeight: FontWeight.bold,
@@ -95,17 +95,22 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
     return const SizedBox.shrink();
   }
 
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(8),
-      border: day == calendar.currentDate.day
-          ? Border.all(color: Colors.black, width: 2)
-          : null,
+  return GestureDetector(
+    onTap: () => calendarViewModel.selectDate(
+      DateTime(dateTime.year, dateTime.month, day),
     ),
-    child: Center(
-      child: Text(
-        "$day",
-        style: TextStyle(color: AppTheme.lightTheme.colorScheme.onSurface),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: day == calendar.selectedDate.day
+            ? Border.all(color: Colors.black)
+            : null,
+      ),
+      child: Center(
+        child: Text(
+          "$day",
+          style: TextStyle(color: AppTheme.lightTheme.colorScheme.onSurface),
+        ),
       ),
     ),
   );
