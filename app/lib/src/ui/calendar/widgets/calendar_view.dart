@@ -107,9 +107,24 @@ Widget _buildCalendarCell(int index, CalendarViewModel calendarViewModel) {
             : null,
       ),
       child: Center(
-        child: Text(
-          "$day",
-          style: TextStyle(color: AppTheme.lightTheme.colorScheme.onSurface),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isIndexToday
+                ? AppPalette.darkBackground
+                : Colors.transparent,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.extraSmall),
+            child: Text(
+              "$day",
+              style: TextStyle(
+                fontSize: isIndexToday ? 10 : null,
+                color: isIndexToday ? AppPalette.onDark : AppPalette.onLight,
+                fontWeight: isIndexToday ? FontWeight.w500 : FontWeight.normal,
+              ),
+            ),
+          ),
         ),
       ),
     ),
