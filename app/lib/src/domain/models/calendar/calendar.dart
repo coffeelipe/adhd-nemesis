@@ -4,7 +4,7 @@ part 'calendar.g.dart';
 
 class Calendar {
   final Map<EventType, List<CalendarEvent>> events;
-
+  final DateTime selectedDate;
   DateTime get currentDate => DateTime.now();
 
   Calendar copyWith({
@@ -18,8 +18,9 @@ class Calendar {
   }
 
   Calendar({
+    DateTime? selectedDate,
     this.events = const {EventType.reminder: [], EventType.schedule: []},
-  });
+  }) : selectedDate = selectedDate ?? DateTime.now();
 }
 
 @riverpod
