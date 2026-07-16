@@ -6,33 +6,16 @@ class Calendar {
   final Map<EventType, List<CalendarEvent>> events;
 
   DateTime get currentDate => DateTime.now();
-  int get monthGridSize =>
-      42; // 5 weeks * 7 days + 7 cells for rendering weekdays
-  Map<String, List<String>> get timeStrings => {
-    'months': [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ],
-    'days': [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ],
-  };
+
+  Calendar copyWith({
+    Map<EventType, List<CalendarEvent>>? events,
+    DateTime? selectedDate,
+  }) {
+    return Calendar(
+      events: events ?? this.events,
+      selectedDate: selectedDate ?? currentDate,
+    );
+  }
 
   Calendar({
     this.events = const {EventType.reminder: [], EventType.schedule: []},
