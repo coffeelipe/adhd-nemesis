@@ -35,6 +35,7 @@ app/.buildlog/
 app/.svn/
 app/.swiftpm/
 app/migrate_working_dir/
+app/devtools_options.yaml
 
 # Android build and local configuration
 app/android/.gradle/
